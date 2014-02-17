@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3957D2FBE114472B9DB3C0C0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6CE10B312624C739E1FC7F1 /* libPods.a */; };
 		C7BDF32418B213B0003A1B9E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7BDF32318B213B0003A1B9E /* Foundation.framework */; };
 		C7BDF32618B213B0003A1B9E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7BDF32518B213B0003A1B9E /* CoreGraphics.framework */; };
 		C7BDF32818B213B0003A1B9E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7BDF32718B213B0003A1B9E /* UIKit.framework */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C6CE10B312624C739E1FC7F1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7BDF32018B213B0003A1B9E /* BestEffect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestEffect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7BDF32318B213B0003A1B9E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C7BDF32518B213B0003A1B9E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,6 +55,7 @@
 		C7BDF35718B2144D003A1B9E /* MotionEffectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MotionEffectViewController.h; path = Source/Module/MotionEffect/MotionEffectViewController.h; sourceTree = "<group>"; };
 		C7BDF35818B2144D003A1B9E /* MotionEffectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MotionEffectViewController.m; path = Source/Module/MotionEffect/MotionEffectViewController.m; sourceTree = "<group>"; };
 		C7BDF35B18B214EE003A1B9E /* bug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bug.png; path = Resource/images/bug.png; sourceTree = "<group>"; };
+		EB9F5CD1AF634D1699C42D47 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,7 @@
 				C7BDF32618B213B0003A1B9E /* CoreGraphics.framework in Frameworks */,
 				C7BDF32818B213B0003A1B9E /* UIKit.framework in Frameworks */,
 				C7BDF32418B213B0003A1B9E /* Foundation.framework in Frameworks */,
+				3957D2FBE114472B9DB3C0C0 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +90,7 @@
 				C7BDF34218B213B0003A1B9E /* BestEffectTests */,
 				C7BDF32218B213B0003A1B9E /* Frameworks */,
 				C7BDF32118B213B0003A1B9E /* Products */,
+				EB9F5CD1AF634D1699C42D47 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +110,7 @@
 				C7BDF32518B213B0003A1B9E /* CoreGraphics.framework */,
 				C7BDF32718B213B0003A1B9E /* UIKit.framework */,
 				C7BDF33C18B213B0003A1B9E /* XCTest.framework */,
+				C6CE10B312624C739E1FC7F1 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -207,9 +213,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7BDF34C18B213B0003A1B9E /* Build configuration list for PBXNativeTarget "BestEffect" */;
 			buildPhases = (
+				393E3198C3224E9DA6DBBE02 /* Check Pods Manifest.lock */,
 				C7BDF31C18B213B0003A1B9E /* Sources */,
 				C7BDF31D18B213B0003A1B9E /* Frameworks */,
 				C7BDF31E18B213B0003A1B9E /* Resources */,
+				94BFA969845D4EA8A0511C46 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -290,6 +298,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		393E3198C3224E9DA6DBBE02 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		94BFA969845D4EA8A0511C46 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C7BDF31C18B213B0003A1B9E /* Sources */ = {
@@ -416,26 +457,34 @@
 		};
 		C7BDF34D18B213B0003A1B9E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB9F5CD1AF634D1699C42D47 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BestEffect/BestEffect-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "BestEffect/BestEffect-Info.plist";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		C7BDF34E18B213B0003A1B9E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB9F5CD1AF634D1699C42D47 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BestEffect/BestEffect-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "BestEffect/BestEffect-Info.plist";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -501,6 +550,7 @@
 				C7BDF34E18B213B0003A1B9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C7BDF34F18B213B0003A1B9E /* Build configuration list for PBXNativeTarget "BestEffectTests" */ = {
 			isa = XCConfigurationList;
@@ -509,6 +559,7 @@
 				C7BDF35118B213B0003A1B9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

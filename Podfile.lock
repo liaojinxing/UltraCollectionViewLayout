@@ -1,0 +1,10 @@
+PODS:
+  - NGAParallaxMotion (1.0.2)
+
+DEPENDENCIES:
+  - NGAParallaxMotion (~> 1.0.2)
+
+SPEC CHECKSUMS:
+  NGAParallaxMotion: 876e8934ae1e99eea3a2a0a1e2ae33139f1503b7
+
+COCOAPODS: 0.29.0

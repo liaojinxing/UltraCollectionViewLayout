@@ -7,6 +7,7 @@
 //
 
 #import "MotionEffectViewController.h"
+#import "NGAParallaxMotion.h"
 
 @implementation MotionEffectViewController
 
