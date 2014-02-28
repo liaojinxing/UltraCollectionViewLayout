@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3957D2FBE114472B9DB3C0C0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6CE10B312624C739E1FC7F1 /* libPods.a */; };
+		C727658218C0317F00994F96 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C727658118C0317F00994F96 /* CollectionViewController.m */; };
+		C727658518C0320E00994F96 /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C727658418C0320E00994F96 /* CollectionCell.m */; };
+		C727658818C033ED00994F96 /* UltraCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C727658718C033ED00994F96 /* UltraCollectionViewLayout.m */; };
 		C7BDF32418B213B0003A1B9E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7BDF32318B213B0003A1B9E /* Foundation.framework */; };
 		C7BDF32618B213B0003A1B9E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7BDF32518B213B0003A1B9E /* CoreGraphics.framework */; };
 		C7BDF32818B213B0003A1B9E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7BDF32718B213B0003A1B9E /* UIKit.framework */; };
@@ -38,6 +41,12 @@
 
 /* Begin PBXFileReference section */
 		C6CE10B312624C739E1FC7F1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C727658018C0317F00994F96 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewController.h; path = Source/Module/Collection/CollectionViewController.h; sourceTree = "<group>"; };
+		C727658118C0317F00994F96 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionViewController.m; path = Source/Module/Collection/CollectionViewController.m; sourceTree = "<group>"; };
+		C727658318C0320E00994F96 /* CollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionCell.h; path = Source/Module/Collection/CollectionCell.h; sourceTree = "<group>"; };
+		C727658418C0320E00994F96 /* CollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionCell.m; path = Source/Module/Collection/CollectionCell.m; sourceTree = "<group>"; };
+		C727658618C033ED00994F96 /* UltraCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UltraCollectionViewLayout.h; path = Source/Module/Collection/UltraCollectionViewLayout.h; sourceTree = "<group>"; };
+		C727658718C033ED00994F96 /* UltraCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UltraCollectionViewLayout.m; path = Source/Module/Collection/UltraCollectionViewLayout.m; sourceTree = "<group>"; };
 		C7BDF32018B213B0003A1B9E /* BestEffect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestEffect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7BDF32318B213B0003A1B9E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C7BDF32518B213B0003A1B9E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -88,6 +97,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C727657F18C0316100994F96 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				C727658018C0317F00994F96 /* CollectionViewController.h */,
+				C727658118C0317F00994F96 /* CollectionViewController.m */,
+				C727658318C0320E00994F96 /* CollectionCell.h */,
+				C727658418C0320E00994F96 /* CollectionCell.m */,
+				C727658618C033ED00994F96 /* UltraCollectionViewLayout.h */,
+				C727658718C033ED00994F96 /* UltraCollectionViewLayout.m */,
+			);
+			name = Collection;
+			sourceTree = "<group>";
+		};
 		C7BDF31718B213B0003A1B9E = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +211,7 @@
 		C7BDF35518B213E5003A1B9E /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				C727657F18C0316100994F96 /* Collection */,
 				C7BDF35D18B31266003A1B9E /* Paper */,
 				C7BDF35618B21405003A1B9E /* MotionEffect */,
 			);
@@ -357,6 +380,9 @@
 				C7BDF35918B2144D003A1B9E /* MotionEffectViewController.m in Sources */,
 				C7BDF36018B31286003A1B9E /* MoveImageViewController.m in Sources */,
 				C7BDF33418B213B0003A1B9E /* AppDelegate.m in Sources */,
+				C727658818C033ED00994F96 /* UltraCollectionViewLayout.m in Sources */,
+				C727658518C0320E00994F96 /* CollectionCell.m in Sources */,
+				C727658218C0317F00994F96 /* CollectionViewController.m in Sources */,
 				C7BDF33018B213B0003A1B9E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
