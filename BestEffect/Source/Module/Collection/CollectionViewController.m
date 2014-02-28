@@ -20,15 +20,15 @@
 {
   if (!_collectionView) {
     UltraCollectionViewLayout *layout = [[UltraCollectionViewLayout alloc] init];
-    
-    layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-    layout.minimumInteritemSpacing = 30;
+    layout.expandItemHeight = 300;
+    layout.shrinkItemHeight = 120;
     
     _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
     _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
-    _collectionView.backgroundColor = [UIColor blueColor];
+    _collectionView.backgroundColor = [UIColor colorWithWhite:0.5 alpha:1.0];
+    _collectionView.decelerationRate = UIScrollViewDecelerationRateNormal / 10;
     [_collectionView registerClass:[CollectionCell class]
         forCellWithReuseIdentifier:CELL_IDENTIFIER];
     [_collectionView registerClass:[CollectionFooterView class]
@@ -66,9 +66,9 @@
   cell.displayString = [NSString stringWithFormat:@"%d", indexPath.item];
 
   if (indexPath.row % 2 == 0) {
-    [cell.displayLabel setBackgroundColor:[UIColor greenColor]];
+    [cell.displayLabel setBackgroundColor:[UIColor colorWithWhite:0.5 alpha:1.0]];
   } else {
-    [cell.displayLabel setBackgroundColor:[UIColor blueColor]];
+    [cell.displayLabel setBackgroundColor:[UIColor colorWithWhite:0.9 alpha:1.0]];
   }
   return cell;
 }
@@ -88,10 +88,17 @@
   UltraCollectionViewLayout *layout = (UltraCollectionViewLayout *)self.collectionView.collectionViewLayout;
   CGPoint anotherPoint = CGPointMake(point.x, point.y + layout.expandItemHeight - layout.shrinkItemHeight);
   NSIndexPath *path = [self.collectionView indexPathForItemAtPoint:anotherPoint];
+  if (point.y <= layout.shrinkItemHeight) {
+    path = [NSIndexPath indexPathForRow:0 inSection:0];
+  }
   
   [self.collectionView performBatchUpdates:^{
     [layout setShowingIndex:path.item];
   } completion:nil];
+  
+  [self.collectionView scrollToItemAtIndexPath:path
+                              atScrollPosition:UICollectionViewScrollPositionLeft
+                                      animated:NO];
 }
 
 @end
