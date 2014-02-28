@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *const collectionKindSectionFooter;
+
 @interface UltraCollectionViewLayout : UICollectionViewFlowLayout
 
 @property (nonatomic, assign) CGFloat expandItemHeight;
 @property (nonatomic, assign) CGFloat shrinkItemHeight;
 @property (nonatomic, assign) NSInteger showingIndex;
 @property (nonatomic, assign) CGFloat itemWidth;
+@property (nonatomic, assign) CGFloat footerHeight;
 
 @end

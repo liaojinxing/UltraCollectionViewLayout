@@ -9,13 +9,12 @@
 #import "CollectionViewController.h"
 #import "CollectionCell.h"
 #import "UltraCollectionViewLayout.h"
+#import "CollectionFooterView.h"
 
-
-#define CELL_IDENTIFIER @"CollectionCell"
+#define CELL_IDENTIFIER        @"CollectionCell"
+#define CELL_FOOTER_IDENTIFIER @"CollectionFooter"
 
 @implementation CollectionViewController
-
-#pragma mark - Accessors
 
 - (UICollectionView *)collectionView
 {
@@ -32,6 +31,8 @@
     _collectionView.backgroundColor = [UIColor whiteColor];
     [_collectionView registerClass:[CollectionCell class]
         forCellWithReuseIdentifier:CELL_IDENTIFIER];
+    [_collectionView registerClass:[CollectionFooterView class]
+        forSupplementaryViewOfKind:collectionKindSectionFooter withReuseIdentifier:CELL_FOOTER_IDENTIFIER];
   }
   return _collectionView;
 }
@@ -73,11 +74,20 @@
   return cell;
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+  UICollectionReusableView *reusableView =
+  [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                     withReuseIdentifier:CELL_FOOTER_IDENTIFIER
+                                            forIndexPath:indexPath];
+  return reusableView;
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
   CGPoint point = scrollView.contentOffset;
   UltraCollectionViewLayout *layout = (UltraCollectionViewLayout *)self.collectionView.collectionViewLayout;
-  CGPoint anotherPoint = CGPointMake(point.x, point.y + 100);
+  CGPoint anotherPoint = CGPointMake(point.x, point.y + layout.expandItemHeight - layout.shrinkItemHeight);
   NSIndexPath *path = [self.collectionView indexPathForItemAtPoint:anotherPoint];
   
   [self.collectionView performBatchUpdates:^{

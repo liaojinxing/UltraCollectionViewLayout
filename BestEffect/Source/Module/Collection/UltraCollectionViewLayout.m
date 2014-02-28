@@ -8,10 +8,13 @@
 
 #import "UltraCollectionViewLayout.h"
 
+NSString *const collectionKindSectionFooter = @"KindSectionFooter";
+
 @interface UltraCollectionViewLayout ()
 @property (nonatomic, strong) NSMutableArray *itemAttributes;
 @property (nonatomic, strong) NSMutableArray *itemYOffset;
 @property (nonatomic, assign) NSInteger cellCount;
+@property (nonatomic, strong) NSMutableArray *footersAttrubite;
 @end
 
 
@@ -49,6 +52,14 @@
   }
 }
 
+- (void)setFooterHeight:(CGFloat)footerHeight
+{
+  if (_footerHeight != footerHeight) {
+    _footerHeight = footerHeight;
+    [self invalidateLayout];
+  }
+}
+
 - (NSMutableArray *)itemAttributes {
   if (!_itemAttributes) {
     _itemAttributes = [NSMutableArray array];
@@ -64,6 +75,12 @@
   return _itemYOffset;
 }
 
+- (NSMutableArray *)footersAttrubite {
+  if (!_footersAttrubite) {
+    _footersAttrubite = [NSMutableArray array];
+  }
+  return _footersAttrubite;
+}
 
 - (void)commonInit
 {
@@ -72,6 +89,7 @@
   _cellCount = 0;
   _itemWidth = 320;
   _showingIndex = 0;
+  _footerHeight = 568 - _expandItemHeight;
 }
 
 - (id)init
@@ -103,9 +121,11 @@
   
   [self.itemYOffset removeAllObjects];
   [self.itemAttributes removeAllObjects];
+  [self.footersAttrubite removeAllObjects];
   
   UICollectionViewLayoutAttributes *attributes;
-  CGFloat xOffset = ceilf((self.collectionView.frame.size.width - _itemWidth) / 2);
+  CGFloat width = self.collectionView.frame.size.width;
+  CGFloat xOffset = ceilf((width - _itemWidth) / 2);
   CGFloat yOffset = 0;
   
   for (int i = 0; i < _cellCount; i++) {
@@ -118,6 +138,13 @@
     [self.itemAttributes addObject:attributes];
     yOffset += itemHeight;
   }
+  
+  _footerHeight = MAX(self.collectionView.frame.size.height - _expandItemHeight - (_cellCount - _showingIndex) * _shrinkItemHeight, _footerHeight);
+  attributes = [UICollectionViewLayoutAttributes
+                layoutAttributesForSupplementaryViewOfKind:collectionKindSectionFooter
+                withIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+  attributes.frame = CGRectMake(0, yOffset, width, _footerHeight);
+  _footersAttrubite[0] = attributes;
 }
 
 - (CGSize)collectionViewContentSize
@@ -126,7 +153,7 @@
     return CGSizeZero;
   }
   CGSize contentSize = self.collectionView.bounds.size;
-  contentSize.height = _expandItemHeight + (_cellCount - 1) * _shrinkItemHeight;
+  contentSize.height = (_cellCount - 1) * _shrinkItemHeight + self.collectionView.frame.size.height;
   return contentSize;
 }
 
@@ -139,6 +166,14 @@
     return nil;
   }
   return self.itemAttributes[path.item];
+}
+
+- (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+  /*UICollectionViewLayoutAttributes *attribute = nil;
+  if ([kind isEqualToString:collectionKindSectionFooter]) {
+    attribute = self.footersAttrubite[0];
+  }*/
+  return self.footersAttrubite[0];
 }
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
@@ -154,7 +189,15 @@
       [layoutAttributes addObject:[self layoutAttributesForItemAtIndexPath:indexPath]];
     }
   }
+  
+  NSNumber *yOffset = [self.itemYOffset objectAtIndex:_cellCount - 1];
+  CGFloat footerYOffset = (_cellCount == _showingIndex) ? yOffset.floatValue + _expandItemHeight : yOffset.floatValue + _shrinkItemHeight;
+  CGRect frame = CGRectMake(0, footerYOffset, self.collectionView.frame.size.width, _footerHeight);
+  if (CGRectIntersectsRect(rect, frame)) {
+    [layoutAttributes addObject:[self layoutAttributesForSupplementaryViewOfKind:collectionKindSectionFooter atIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]];
+  }
   return layoutAttributes;
 }
+
 
 @end
