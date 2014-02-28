@@ -10,6 +10,18 @@
 
 @implementation CollectionCell
 
+
+- (UIImageView *)coverImageView
+{
+  if (!_coverImageView) {
+    _coverImageView = [[UIImageView alloc] initWithFrame:self.contentView.bounds];
+    _coverImageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    [_coverImageView setImage:[UIImage imageNamed:@"bug"]];
+    [_coverImageView setContentMode:UIViewContentModeBottom];
+  }
+  return _coverImageView;
+}
+
 - (UILabel *)displayLabel {
 	if (!_displayLabel) {
 		_displayLabel = [[UILabel alloc] initWithFrame:self.contentView.bounds];
@@ -37,6 +49,7 @@
 - (id)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
 		[self.contentView addSubview:self.displayLabel];
+    [self.contentView addSubview:self.coverImageView];
 	}
 	return self;
 }

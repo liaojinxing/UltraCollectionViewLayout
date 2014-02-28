@@ -153,7 +153,7 @@ NSString *const collectionKindSectionFooter = @"KindSectionFooter";
     }
     
     attributes.frame = CGRectMake(xOffset, yOffset, _itemWidth, itemHeight);
-    attributes.zIndex = i;
+    attributes.zIndex = _cellCount - i;
     [self.itemYOffset addObject:@(yOffset)];
     [self.itemAttributes addObject:attributes];
     yOffset += itemHeight;

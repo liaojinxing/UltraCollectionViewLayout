@@ -28,7 +28,7 @@
     _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
-    _collectionView.backgroundColor = [UIColor whiteColor];
+    _collectionView.backgroundColor = [UIColor blueColor];
     [_collectionView registerClass:[CollectionCell class]
         forCellWithReuseIdentifier:CELL_IDENTIFIER];
     [_collectionView registerClass:[CollectionFooterView class]
@@ -64,13 +64,12 @@
   (CollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER
                                                               forIndexPath:indexPath];
   cell.displayString = [NSString stringWithFormat:@"%d", indexPath.item];
-  int a = random() % 255;
-  int b = random() % 255;
-  int c = random() % 255;
-  [cell.displayLabel setBackgroundColor:[UIColor colorWithRed:a / 255.0
-                                                        green:b / 255.0
-                                                         blue:c / 255.0
-                                                        alpha:1.0f]];
+
+  if (indexPath.row % 2 == 0) {
+    [cell.displayLabel setBackgroundColor:[UIColor greenColor]];
+  } else {
+    [cell.displayLabel setBackgroundColor:[UIColor blueColor]];
+  }
   return cell;
 }
 

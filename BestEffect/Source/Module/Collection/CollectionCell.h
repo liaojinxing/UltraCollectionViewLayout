@@ -12,5 +12,6 @@
 
 @property (nonatomic, copy) NSString *displayString;
 @property (nonatomic, strong) UILabel *displayLabel;
+@property (nonatomic, strong) UIImageView *coverImageView;
 
 @end
