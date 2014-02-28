@@ -15,6 +15,7 @@ NSString *const collectionKindSectionFooter = @"KindSectionFooter";
 @property (nonatomic, strong) NSMutableArray *itemYOffset;
 @property (nonatomic, assign) NSInteger cellCount;
 @property (nonatomic, strong) NSMutableArray *footersAttrubite;
+@property (nonatomic, assign) CGFloat currentShowItemHeight;
 @end
 
 
@@ -48,6 +49,15 @@ NSString *const collectionKindSectionFooter = @"KindSectionFooter";
 {
   if (_showingIndex != showingIndex) {
     _showingIndex = showingIndex;
+    [self invalidateLayout];
+  }
+}
+
+- (void)updateShowingIndex:(NSInteger)index showHeight:(CGFloat)height
+{
+  if (_showingIndex != index || _currentShowItemHeight != height) {
+    _showingIndex = index;
+    _currentShowItemHeight = height;
     [self invalidateLayout];
   }
 }
@@ -89,6 +99,7 @@ NSString *const collectionKindSectionFooter = @"KindSectionFooter";
   _cellCount = 0;
   _itemWidth = 320;
   _showingIndex = 0;
+  _currentShowItemHeight = _expandItemHeight;
   _footerHeight = 568 - _expandItemHeight;
 }
 
@@ -119,10 +130,12 @@ NSString *const collectionKindSectionFooter = @"KindSectionFooter";
     _cellCount = [self.collectionView numberOfItemsInSection:0];
   }
   
+  // clear all attributes for update
   [self.itemYOffset removeAllObjects];
   [self.itemAttributes removeAllObjects];
   [self.footersAttrubite removeAllObjects];
   
+  // set cell frames
   UICollectionViewLayoutAttributes *attributes;
   CGFloat width = self.collectionView.frame.size.width;
   CGFloat xOffset = ceilf((width - _itemWidth) / 2);
@@ -131,7 +144,14 @@ NSString *const collectionKindSectionFooter = @"KindSectionFooter";
   for (int i = 0; i < _cellCount; i++) {
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
     attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-    CGFloat itemHeight = (i == _showingIndex) ? _expandItemHeight : _shrinkItemHeight;
+    
+    CGFloat itemHeight = _shrinkItemHeight;
+    if (i == _showingIndex) {
+      itemHeight = _currentShowItemHeight;
+    } else if (i == _showingIndex + 1) {
+      itemHeight = _expandItemHeight + _shrinkItemHeight - _currentShowItemHeight;
+    }
+    
     attributes.frame = CGRectMake(xOffset, yOffset, _itemWidth, itemHeight);
     attributes.zIndex = i;
     [self.itemYOffset addObject:@(yOffset)];
@@ -139,6 +159,7 @@ NSString *const collectionKindSectionFooter = @"KindSectionFooter";
     yOffset += itemHeight;
   }
   
+  // set FooterView frame
   _footerHeight = MAX(self.collectionView.frame.size.height - _expandItemHeight - (_cellCount - _showingIndex) * _shrinkItemHeight, _footerHeight);
   attributes = [UICollectionViewLayoutAttributes
                 layoutAttributesForSupplementaryViewOfKind:collectionKindSectionFooter
@@ -182,7 +203,13 @@ NSString *const collectionKindSectionFooter = @"KindSectionFooter";
   
   for (int i = 0; i < _cellCount; i++) {
     NSNumber *yOffset = [self.itemYOffset objectAtIndex:i];
-    CGFloat itemHeight = (i == _showingIndex) ? _expandItemHeight : _shrinkItemHeight;
+    
+    CGFloat itemHeight = _shrinkItemHeight;
+    if (i == _showingIndex) {
+      itemHeight = _currentShowItemHeight;
+    } else if (i == _showingIndex + 1) {
+      itemHeight = _expandItemHeight + _shrinkItemHeight - _currentShowItemHeight;
+    }
     CGRect itemFrame = CGRectMake(0, yOffset.floatValue, self.collectionView.frame.size.width, itemHeight);
     if (CGRectIntersectsRect(rect, itemFrame)) {
       NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];

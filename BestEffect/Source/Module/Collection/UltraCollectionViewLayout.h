@@ -18,4 +18,6 @@ extern NSString *const collectionKindSectionFooter;
 @property (nonatomic, assign) CGFloat itemWidth;
 @property (nonatomic, assign) CGFloat footerHeight;
 
+- (void)updateShowingIndex:(NSInteger)index showHeight:(CGFloat)height;
+
 @end
