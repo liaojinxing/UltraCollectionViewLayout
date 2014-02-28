@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CollectionViewController : UIViewController<UICollectionViewDataSource>
+@interface CollectionViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 

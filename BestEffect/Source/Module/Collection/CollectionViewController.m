@@ -8,6 +8,7 @@
 
 #import "CollectionViewController.h"
 #import "CollectionCell.h"
+#import "UltraCollectionViewLayout.h"
 
 
 #define CELL_IDENTIFIER @"CollectionCell"
@@ -16,9 +17,10 @@
 
 #pragma mark - Accessors
 
-- (UICollectionView *)collectionView {
+- (UICollectionView *)collectionView
+{
   if (!_collectionView) {
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    UltraCollectionViewLayout *layout = [[UltraCollectionViewLayout alloc] init];
     
     layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     layout.minimumInteritemSpacing = 30;
@@ -34,41 +36,53 @@
   return _collectionView;
 }
 
-
 #pragma mark - Life Cycle
 
-- (void)dealloc {
+- (void)dealloc
+{
   _collectionView.delegate = nil;
   _collectionView.dataSource = nil;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
   [super viewDidLoad];
   [self.view addSubview:self.collectionView];
 }
 
-
 #pragma mark - UICollectionViewDataSource
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-  return 5;
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+  return 10;
 }
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-  return 2;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
   CollectionCell *cell =
   (CollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER
                                                               forIndexPath:indexPath];
   cell.displayString = [NSString stringWithFormat:@"%d", indexPath.item];
+  int a = random() % 255;
+  int b = random() % 255;
+  int c = random() % 255;
+  [cell.displayLabel setBackgroundColor:[UIColor colorWithRed:a / 255.0
+                                                        green:b / 255.0
+                                                         blue:c / 255.0
+                                                        alpha:1.0f]];
   return cell;
 }
 
-#pragma mark - CHTCollectionViewDelegateWaterfallLayout
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-  return CGSizeMake(300, indexPath.item * random() % 100 + 100);
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+  CGPoint point = scrollView.contentOffset;
+  UltraCollectionViewLayout *layout = (UltraCollectionViewLayout *)self.collectionView.collectionViewLayout;
+  CGPoint anotherPoint = CGPointMake(point.x, point.y + 100);
+  NSIndexPath *path = [self.collectionView indexPathForItemAtPoint:anotherPoint];
+  
+  [self.collectionView performBatchUpdates:^{
+    [layout setShowingIndex:path.item];
+  } completion:nil];
 }
 
 @end

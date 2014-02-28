@@ -10,4 +10,9 @@
 
 @interface UltraCollectionViewLayout : UICollectionViewFlowLayout
 
+@property (nonatomic, assign) CGFloat expandItemHeight;
+@property (nonatomic, assign) CGFloat shrinkItemHeight;
+@property (nonatomic, assign) NSInteger showingIndex;
+@property (nonatomic, assign) CGFloat itemWidth;
+
 @end
