@@ -70,6 +70,7 @@
   } else {
     [cell.displayLabel setBackgroundColor:[UIColor colorWithWhite:0.9 alpha:1.0]];
   }
+  [cell.coverImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.jpeg", indexPath.item+1]]];
   return cell;
 }
 

@@ -46,9 +46,6 @@
   [button2 setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
   [button2 addTarget:self action:@selector(resumeLayer) forControlEvents:UIControlEventTouchUpInside];
   [self.view addSubview:button2];
-
-  //[self addImageAnimation];
-  //[self transitionEffect];
 }
 
 - (void)addMotionEffect
