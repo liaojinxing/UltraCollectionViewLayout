@@ -190,10 +190,6 @@ NSString *const collectionKindSectionFooter = @"KindSectionFooter";
 }
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-  /*UICollectionViewLayoutAttributes *attribute = nil;
-  if ([kind isEqualToString:collectionKindSectionFooter]) {
-    attribute = self.footersAttrubite[0];
-  }*/
   return self.footersAttrubite[0];
 }
 
