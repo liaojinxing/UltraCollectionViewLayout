@@ -7,8 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "MotionEffectViewController.h"
-#import "MoveImageViewController.h"
 #import "CollectionViewController.h"
 
 @implementation AppDelegate
@@ -16,10 +14,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  // Override point for customization after application launch.
   self.window.backgroundColor = [UIColor whiteColor];
-  //MoveImageViewController *controller = [[MoveImageViewController alloc] init];
-  //MotionEffectViewController *controller = [[MotionEffectViewController alloc] init];
   CollectionViewController *controller = [[CollectionViewController alloc] init];
   self.window.rootViewController = controller;
   

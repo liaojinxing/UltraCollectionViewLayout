@@ -34,9 +34,7 @@
 		C7BDF33F18B213B0003A1B9E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7BDF32718B213B0003A1B9E /* UIKit.framework */; };
 		C7BDF34718B213B0003A1B9E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7BDF34518B213B0003A1B9E /* InfoPlist.strings */; };
 		C7BDF34918B213B0003A1B9E /* BestEffectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BDF34818B213B0003A1B9E /* BestEffectTests.m */; };
-		C7BDF35918B2144D003A1B9E /* MotionEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BDF35818B2144D003A1B9E /* MotionEffectViewController.m */; };
 		C7BDF35C18B214EE003A1B9E /* bug.png in Resources */ = {isa = PBXBuildFile; fileRef = C7BDF35B18B214EE003A1B9E /* bug.png */; };
-		C7BDF36018B31286003A1B9E /* MoveImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BDF35F18B31286003A1B9E /* MoveImageViewController.m */; };
 		C7BDF36218B314A9003A1B9E /* orionfull_jcc_big.png in Resources */ = {isa = PBXBuildFile; fileRef = C7BDF36118B314A9003A1B9E /* orionfull_jcc_big.png */; };
 /* End PBXBuildFile section */
 
@@ -86,11 +84,7 @@
 		C7BDF34418B213B0003A1B9E /* BestEffectTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BestEffectTests-Info.plist"; sourceTree = "<group>"; };
 		C7BDF34618B213B0003A1B9E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C7BDF34818B213B0003A1B9E /* BestEffectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BestEffectTests.m; sourceTree = "<group>"; };
-		C7BDF35718B2144D003A1B9E /* MotionEffectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MotionEffectViewController.h; path = Source/Module/MotionEffect/MotionEffectViewController.h; sourceTree = "<group>"; };
-		C7BDF35818B2144D003A1B9E /* MotionEffectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MotionEffectViewController.m; path = Source/Module/MotionEffect/MotionEffectViewController.m; sourceTree = "<group>"; };
 		C7BDF35B18B214EE003A1B9E /* bug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bug.png; path = Resource/images/bug.png; sourceTree = "<group>"; };
-		C7BDF35E18B31286003A1B9E /* MoveImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoveImageViewController.h; path = Source/Module/Paper/MoveImageViewController.h; sourceTree = "<group>"; };
-		C7BDF35F18B31286003A1B9E /* MoveImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoveImageViewController.m; path = Source/Module/Paper/MoveImageViewController.m; sourceTree = "<group>"; };
 		C7BDF36118B314A9003A1B9E /* orionfull_jcc_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = orionfull_jcc_big.png; path = Resource/images/orionfull_jcc_big.png; sourceTree = "<group>"; };
 		EB9F5CD1AF634D1699C42D47 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -254,19 +248,8 @@
 			isa = PBXGroup;
 			children = (
 				C727657F18C0316100994F96 /* Collection */,
-				C7BDF35D18B31266003A1B9E /* Paper */,
-				C7BDF35618B21405003A1B9E /* MotionEffect */,
 			);
 			name = Module;
-			sourceTree = "<group>";
-		};
-		C7BDF35618B21405003A1B9E /* MotionEffect */ = {
-			isa = PBXGroup;
-			children = (
-				C7BDF35718B2144D003A1B9E /* MotionEffectViewController.h */,
-				C7BDF35818B2144D003A1B9E /* MotionEffectViewController.m */,
-			);
-			name = MotionEffect;
 			sourceTree = "<group>";
 		};
 		C7BDF35A18B214E3003A1B9E /* images */ = {
@@ -277,15 +260,6 @@
 				C7BDF35B18B214EE003A1B9E /* bug.png */,
 			);
 			name = images;
-			sourceTree = "<group>";
-		};
-		C7BDF35D18B31266003A1B9E /* Paper */ = {
-			isa = PBXGroup;
-			children = (
-				C7BDF35E18B31286003A1B9E /* MoveImageViewController.h */,
-				C7BDF35F18B31286003A1B9E /* MoveImageViewController.m */,
-			);
-			name = Paper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,8 +404,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7BDF35918B2144D003A1B9E /* MotionEffectViewController.m in Sources */,
-				C7BDF36018B31286003A1B9E /* MoveImageViewController.m in Sources */,
 				C7BDF33418B213B0003A1B9E /* AppDelegate.m in Sources */,
 				C727658818C033ED00994F96 /* UltraCollectionViewLayout.m in Sources */,
 				C727658518C0320E00994F96 /* CollectionCell.m in Sources */,
