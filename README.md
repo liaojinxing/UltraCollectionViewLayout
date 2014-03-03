@@ -1,4 +1,4 @@
-BestEffect
-==========
+UltraCollectionViewLayout
+=========================
 
-Best effects for iOS app.
+A custom UICollectionViewLayout looks like Ultravisual collections list.
